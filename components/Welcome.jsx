@@ -9,7 +9,7 @@ const Welcome = () => {
 
   return (
     <div
-      className="h-full w-full flex items-center justify-center px-10"
+      className=" bg-cover h-full w-full flex items-center justify-center px-10 bg-no-repeat"
       style={bgImage}
     >
       <div className="flex flex-col items-center bg-purple-100 p-16 rounded-xl bg-opacity-70">

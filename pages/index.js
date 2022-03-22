@@ -7,7 +7,8 @@ import Welcome from "../components/Welcome";
 import Modal from "../components/Modal";
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  console.log(status, "<= loading");
   return (
     <div className="relative h-screen overflow-y-scroll bg-gray-50 scrollbar-none">
       <Head>
@@ -16,12 +17,20 @@ export default function Home() {
       </Head>
 
       <Header />
-      {session ? (
+      {session && status === "authenticated" ? (
         <>
           <Feed />
           <Modal />
           <BottomMobileHeader />
         </>
+      ) : status == "loading" ? (
+        <div className="h-screen flex items-center justify-center animate-spin">
+          <img
+            className=" max-h-52"
+            src="/rottweiler.png"
+            alt="rot spinning head"
+          />
+        </div>
       ) : (
         <Welcome />
       )}
